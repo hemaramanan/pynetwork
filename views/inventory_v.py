@@ -62,11 +62,3 @@ def deleteDevice():
     payload = request.get_json()
     response = delete_device(payload)
     return {"message": response}
-
-# Get the device parameters from device/devices and make it into list.
-# def get_device_list(deviceNames):
-#     device_list = list()
-#     for device in deviceNames:
-#         record = Device.query.filter_by(hostname=device).first()
-#         device_list.append(get_model_as_dict(record))
-#     return(device_list)

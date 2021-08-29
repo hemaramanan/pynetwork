@@ -5,11 +5,10 @@ from paramiko.ssh_exception import SSHException
 from netmiko.ssh_exception import AuthenticationException
 
 
-def show_cisco_cli(devices, commands):
+def config_cisco_cli(devices, commands):
     response = dict()
 
     for device in devices:
-        coommandRespons = list()
         ip_address_of_device = device["host"]
         try:
             net_connect = ciscon.CiscoBaseConnection(**device)
@@ -36,12 +35,11 @@ def show_cisco_cli(devices, commands):
             continue
 
         print(net_connect.find_prompt())
-        for command in commands:
-            output = net_connect.send_command(command)
-            print(f"Executing >> {command} >> on device >> ",
+        output = net_connect.send_config_set(commands)
+        if output:
+            print(f"Executing >> {commands} >> on device >> ",
                   device['host'], "\n", "*" * 60)
             print(output)
-            coommandRespons.append(output)
-        response.update({device["host"]: coommandRespons})
+            response.update({device["host"]: "Sucessfully configured!"})
 
     return (response)
