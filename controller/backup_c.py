@@ -1,11 +1,15 @@
-from flask.wrappers import Response
+from genericpath import isfile
 from netmiko import cisco_base_connection as ciscon
 from netmiko.ssh_exception import NetMikoTimeoutException
 from paramiko.ssh_exception import SSHException
 from netmiko.ssh_exception import AuthenticationException
+from time import localtime, strftime
+from os import listdir, remove
+from os.path import isfile
 
 
-def show_cisco_cli(devices, commands):
+# Backup the configuration for selected device
+def backup_cisco_config(devices):
     response = dict()
 
     for device in devices:
@@ -36,13 +40,36 @@ def show_cisco_cli(devices, commands):
             continue
 
         print(net_connect.find_prompt())
-        for command in commands:
-            output = net_connect.send_command(command)
-            print(f"Executing >> {command} >> on device >> ",
-                  device['host'], "\n", "*" * 60)
-            print(output)
-            coommandRespons.append(output)
-        response.update({device["host"]: coommandRespons})
+        print(f"Running configuration Backup on on device >> ",
+              device['host'], "\n", "*" * 60)
+        output = net_connect.send_command("show run")
+        if output:
+            current_time = strftime("%b_%Y_%X", localtime())
+            with open(f"./pynetwork/data/backup_config/{ip_address_of_device}_{current_time}", 'w') as src:
+                src.writelines(output)
+            print("Configuration sucessfully backued on ./data/backup_config")
+            response.update({device["host"]: "Backup completed "})
         net_connect.disconnect()
 
     return (response)
+
+
+# List all the backuped configuration exist on the dir
+def list_cisco_backup():
+    backup_file_list = list()
+    backup_file_list = listdir("./pynetwork/data/backup_config/")
+    return(backup_file_list)
+
+
+# Delete the specific file form dir
+
+def delete_cisco_backup(payload):
+    response = str
+    backup_file_name = payload[0]
+    if isfile(f"./pynetwork/data/backup_config/{backup_file_name}"):
+        delete_backup_file = remove(
+            f"./pynetwork/data/backup_config/{backup_file_name}")
+        response = "Backup file deleted"
+    else:
+        response = "File not exist"
+    return(response)

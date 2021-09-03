@@ -41,5 +41,6 @@ def config_cisco_cli(devices, commands):
                   device['host'], "\n", "*" * 60)
             print(output)
             response.update({device["host"]: "Sucessfully configured!"})
+        net_connect.disconnect()
 
     return (response)
