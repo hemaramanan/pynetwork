@@ -1,9 +1,7 @@
 Building configuration...
 
   
-Current configuration : 3100 bytes
-!
-! Last configuration change at 09:12:13 UTC Sat Aug 28 2021
+Current configuration : 3097 bytes
 !
 version 15.6
 service timestamps debug datetime msec
@@ -102,6 +100,8 @@ no ip http server
 no ip http secure-server
 !
 !
+snmp-server community pynetwork RO
+snmp-server chassis-id 
 !
 !
 control-plane

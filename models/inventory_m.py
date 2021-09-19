@@ -7,8 +7,8 @@ from flask_sqlalchemy import SQLAlchemy
 from pynetwork.controller.inventory_c import get_model_as_dict
 from sqlalchemy.orm import aliased, query
 
-
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite://///home/dev/pynetwork/pynetwork/data/pynetwork.db"
+appRoot = app.root_path
+app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:////{appRoot}/data/pynetwork.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
