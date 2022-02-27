@@ -16,30 +16,17 @@ Create the docker-compose.yml file with the below-mentioned properties.
 
 
   services:
-  
-  
     pynetwork:
-  
       image: hemaramanan/pynetwork_backend
-  
       volumes:
-  
         - /app/pynetwork/data/
-  
       ports:
-  
         - "5000:5000"
-  
     pynetwork_ui:
-  
       image: hemaramanan/pynetwork_frontend
-  
       ports:
-  
         - "8080:80"
-  
       depends_on:
-  
         - pynetwork
 
 Step: 2
@@ -49,19 +36,12 @@ Navigate to the particular folder which contained the docker-compose.yml file an
 
 
   root@ubs:/home/dev/pynetwork/test# ls
-  
   docker-compose.yml
-  
   root@ubs:/home/dev/pynetwork/test# 
-  
   root@ubs:/home/dev/pynetwork/test# docker-compose up
-  
   Creating network "test_default" with the default driver
-  
   Creating test_pynetwork_1 ... done
-  
   Creating test_pynetwork_ui_1 ... done
-  
   Attaching to test_pynetwork_1, test_pynetwork_ui_1
 
 Congratulations, you have successfully deployed the pynetwork on your local environment. Let's have fun with pynetwork!
