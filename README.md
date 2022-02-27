@@ -13,13 +13,9 @@ Create the docker-compose.yml file with the below-mentioned properties.
 
 
   version: "3.9"
-
   services:
-
     pynetwork:
-
       image: hemaramanan/pynetwork_backend
-      
       volumes:
         - /app/pynetwork/data/
       ports:
