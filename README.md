@@ -43,7 +43,8 @@ Navigate to the particular folder which contained the docker-compose.yml file an
   Attaching to test_pynetwork_1, test_pynetwork_ui_1
 ```
 
-Congratulations, you have successfully deployed the pynetwork on your local environment. Let's have fun with pynetwork!
+#### Congratulations! 
+you have successfully deployed the pynetwork on your local environment. Let's have fun with pynetwork!
 
 #### Step: 3
 
