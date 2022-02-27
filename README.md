@@ -1,4 +1,4 @@
-#Pynetwork
+Pynetwork
 
 Pynetwork is a Network Automation tool with WEB GUI
 
@@ -28,7 +28,6 @@ Create the docker-compose.yml file with the below-mentioned properties.
         - pynetwork
 
 Step: 2
-
 
 Navigate to the particular folder which contained the docker-compose.yml file and run the docker-compose up command. while you enter that command, you may get some console output mentioned below.
 
