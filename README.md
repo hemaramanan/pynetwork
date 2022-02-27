@@ -4,6 +4,7 @@
 
 ## Visit www.pynetwork.net for more information.
 
+Please follow the below instructions to run the pynetwork in your local environment. 
 
 ### Quick Setup Quide
 
