@@ -10,8 +10,6 @@ Quick Setup Quide
 Step: 1
 
 Create the docker-compose.yml file with the below-mentioned properties.
-
-
   version: "3.9"
   services:
     pynetwork:
